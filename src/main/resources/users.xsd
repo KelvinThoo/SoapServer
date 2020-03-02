@@ -1,0 +1,118 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://example.com/owners"
+           targetNamespace="http://example.com/owners" elementFormDefault="qualified">
+
+    <xs:element name="MTHSMBRegVerificationReq">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="refNo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="MTHMSBRegVerificationRes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="owner" type="tns:owner"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllUserRequest">
+        <xs:complexType/>
+    </xs:element>
+
+     <xs:element name="getAllUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="owner" type="tns:owner" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+       <xs:element name="getUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="refNo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+     <xs:element name="getUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Msg" type="tns:Msg"/>
+                <xs:element name="vehicle" type="tns:vehicle" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+        <xs:element name="addUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="refNo" type="xs:string"/>
+                <xs:element name="msg" type="xs:string"/>
+                <xs:element name="msgCode" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+     <xs:element name="addUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serverResponse" type="tns:ServerResponse"/>
+                <xs:element name="owner" type="tns:owner"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="refNo" type="xs:string"/>
+                <xs:element name="msg" type="xs:string"/>
+                <xs:element name="msgCode" type="xs:string"/>
+                <xs:element name="SubmissionStatus" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+     <xs:element name="updateUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Msg" type="tns:Msg"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+      <xs:complexType name="Msg">
+        <xs:sequence>
+            <xs:element name="msg" type="xs:string"/>
+            <xs:element name="msgCode" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ServerResponse">
+        <xs:sequence>
+            <xs:element name="serverResponse" type="xs:string"/>
+            <xs:element name="serverMessage" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="owner">
+        <xs:sequence>
+            <xs:element name="refNo" type="xs:string"/>
+            <xs:element name="msg" type="xs:string"/>
+            <xs:element name="msgCode" type="xs:string"/>
+            <xs:element name="submissionStatus" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="vehicle">
+        <xs:sequence>
+            <xs:element name="modelId" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
